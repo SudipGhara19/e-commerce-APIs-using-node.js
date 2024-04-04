@@ -1,12 +1,12 @@
 import express from 'express';
 import ProductController from './product.controller.js';
 
-const ProductRouter = express.Router();
+const productRouter = express.Router();
 const productController = new ProductController();
 
-ProductRouter.get('/', productController.getAllProducts);
-ProductRouter.post('/', productController.addProduct);
+productRouter.get('/', productController.getAllProducts);
+productRouter.post('/', productController.addProduct);
 
 
-export default ProductRouter;
+export default productRouter;
 
