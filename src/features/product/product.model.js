@@ -14,7 +14,12 @@ export default class ProductModel{
         return products;
     }
 
-    // 
+    // to add a item
+    static add(product){
+        product.id = products.length + 1;
+        products.push(product);
+        return product;
+    }
 }
 
 const products = [

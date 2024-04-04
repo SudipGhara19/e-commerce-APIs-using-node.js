@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 const server = express();
 
 //to post data in json
-server.use(bodyParser.json());
+// server.use(bodyParser.json());
 
 // for all requests related to product, redirect to product routes.
 // localhost:3200/api/products
