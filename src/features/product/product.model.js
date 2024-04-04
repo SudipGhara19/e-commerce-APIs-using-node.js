@@ -14,6 +14,12 @@ export default class ProductModel{
         return products;
     }
 
+    //get only one product
+    static get(id){
+        const product = products.find((i) => i.id == id);
+        return product;
+    }
+
     // to add a item
     static add(product){
         product.id = products.length + 1;
