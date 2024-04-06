@@ -8,7 +8,7 @@ const server = express();
 // server.use(bodyParser.json());
 
 // for all requests related to product, redirect to product routes.
-// localhost:3200/api/products
+// localhost:5500/api/products
 server.use('/api/products', productRouter);
 
 //default request handeler
