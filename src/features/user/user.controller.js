@@ -1,4 +1,5 @@
 import UserModel from "./user.model.js";
+import jwt from 'jsonwebtoken';
 
 export default class UserController{
 
@@ -16,7 +17,13 @@ export default class UserController{
         if(!user){
             return res.status(400).send("Invalid user credential!");
         }else{
-            return res.send("Successfully Login!");
+            // 1. Create Token
+            const token = jwt.sign({userID: user.id, email: user.email}, "ZrfSDXbpd2Q5eyDtPj5VBUOCpHDHi0Re", {
+                expiresIn: '1h',
+            });
+
+            // 2. Send Token
+            return res.status(200).send(token);
         }
     }
 
