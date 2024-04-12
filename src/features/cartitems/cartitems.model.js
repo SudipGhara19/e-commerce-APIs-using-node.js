@@ -13,6 +13,11 @@ export default class CartModel{
         cartItems.push(newItem);
         return newItem;
     }
+
+    static get(userID){
+        const items = cartItems.filter((i) => i.userID == userID);
+        return items;
+    }
 }
 
 let cartItems = [
