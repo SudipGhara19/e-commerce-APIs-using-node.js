@@ -64,7 +64,7 @@ export default class ProductModel{
         if(!product.ratings){
             product.rating = [];
             product.rating.push({
-                userId: userID,
+                userID: userID,
                 rating: rating,
             });
         }else{
@@ -78,7 +78,7 @@ export default class ProductModel{
                 };
             }else{
                 product.rating.push({
-                    userId: userID,
+                    userID: userID,
                     rating: rating,
                 });
             }
