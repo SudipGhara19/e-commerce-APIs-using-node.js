@@ -5,10 +5,34 @@
         "description": "APIs for E-Commerce application",
         "title": "E Commerce API"
     },
-    "host": "http://localhost:5500",
+    "host": "localhost:5500",
+    "securityDefinitions":{
+        "JWT":{
+            "in":"header",
+            "name":"Authorization",
+            "type": "apiKey"
+        }
+    },
     "paths": {
+        "/api/products": {
+            "get":{
+                "tags": ["Products"],
+                "summary":"Get Products",
+                "description":"User will get all products",
+                "security":[{"JWT": {} }],
+                "responses":{
+                    "200": {
+                        "description":"OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
         "/api/users/signin": {
             "post": {
+                "tags": ["Users"],
                 "summary": "Login",
                 "description": "User login to get token",
                 "parameters": [

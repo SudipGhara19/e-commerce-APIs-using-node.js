@@ -36,7 +36,7 @@ let users = [
     },
     {
         id: 2,
-        name: "Customer User",
+        name: "customer User",
         email: "customer@gmail.com",
         password: "password1",
         type: "seller",
