@@ -30,6 +30,11 @@ server.get('/', (req, res) => {
     res.send('Welcome to E-commerce APIs.')
 })
 
+// Handle 404 requests 
+server.use((req, res) => {
+    res.status(404).send("Page not found. Please visit localhost:5500/api-docs for more information.")
+});
+
 
 
 server.listen(5500, () => {
