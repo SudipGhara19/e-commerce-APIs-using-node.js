@@ -12,6 +12,20 @@ import apiDocs from './swagger.json' assert {type: "json"};
 
 const server = express();
 
+
+//  CORS Policy Configuration
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3300');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+
+    if(req.method == 'OPTIONS'){
+        return res.sendStatus(200);
+    };
+
+    next();
+}) 
+
 //to post data in json
 server.use(bodyParser.json());
 
