@@ -1,5 +1,6 @@
 import express from 'express';
 import swagger from "swagger-ui-express";
+import cors from 'cors';
 
 
 import productRouter from './src/features/product/product.routes.js';
@@ -13,18 +14,13 @@ import apiDocs from './swagger.json' assert {type: "json"};
 const server = express();
 
 
-//  CORS Policy Configuration
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3300');
-    res.header('Access-Control-Allow-Headers', '*');
-    res.header('Access-Control-Allow-Methods', '*');
+//  CORS Policy Configuration using cors libbrary
+const corsOptions = {
+    origin: 'http://localhost:3300',
+};
 
-    if(req.method == 'OPTIONS'){
-        return res.sendStatus(200);
-    };
-
-    next();
-}) 
+server.use(cors(corsOptions));
+ 
 
 //to post data in json
 server.use(bodyParser.json());
