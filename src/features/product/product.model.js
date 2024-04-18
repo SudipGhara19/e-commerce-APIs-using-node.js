@@ -50,13 +50,13 @@ export default class ProductModel{
         //validate user
         const user = UserModel.getAll().find((u) => u.id == userID);
         if(!user){
-            return "User Not found.";
+            throw new Error("User Not found.");
         }
 
         //validate product
         const product = products.find((p) => p.id == productID);
         if(!product){
-            return "Product not found.";
+            throw new Error("Product not found.");
         }
 
 
