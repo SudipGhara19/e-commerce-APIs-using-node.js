@@ -10,6 +10,7 @@ import cartRouter from './src/features/cartitems/cartitems.routes.js';
 // import basicAuthorizer from './src/middlewares/basicAuth.middleware.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
 import apiDocs from './swagger.json' assert {type: "json"};
+import loggerMiddleware from './src/middlewares/logger.middleware.js';
 
 const server = express();
 
@@ -20,6 +21,8 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
+
+server.use(loggerMiddleware);
  
 
 //to post data in json
@@ -31,8 +34,8 @@ server.use(bodyParser.json());
 //API creating documentaion link
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
 
-server.use('/api/cartItems', jwtAuth, cartRouter);
-server.use('/api/products', jwtAuth, productRouter);
+server.use('/api/cartItems', jwtAuth,  cartRouter);
+server.use('/api/products', jwtAuth,  productRouter);
 server.use('/api/users', userRouter);
 
 //default request handeler
