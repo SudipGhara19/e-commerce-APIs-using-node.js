@@ -24,7 +24,7 @@ export default class ProductController{
     rateProduct(req,res){
         const userID = req.query.userID;
         const productID = req.query.productID;
-        const rating = req.query.rating;
+        const rating = req.queryfd.rating;
 
         try{
             ProductModel.rateProduct(userID, productID, rating);

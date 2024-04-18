@@ -11,6 +11,7 @@ import cartRouter from './src/features/cartitems/cartitems.routes.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
 import apiDocs from './swagger.json' assert {type: "json"};
 import loggerMiddleware from './src/middlewares/logger.middleware.js';
+import ApplicationError from './src/error-handler/applicationError.js';
 
 const server = express();
 
@@ -48,6 +49,16 @@ server.use((req, res) => {
     res.status(404).send("Page not found. Please visit localhost:5500/api-docs for more information.")
 });
 
+
+//Handle ERRORS  Apllication level and user level
+server.use((err, req, res, next) => {
+    console.log(err);
+    if(err instanceof ApplicationError){
+        res.status(err.code).send(err.message);
+    }
+
+    res.status(500).send("Something went wrong, please try again later.")
+})
 
 
 server.listen(5500, () => {
